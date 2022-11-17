@@ -23,15 +23,14 @@ public class FrameMain extends JFrame {
     private JButton buttonLoadInputFromFile;
     private JButton buttonRandomInput;
     private JButton buttonSaveInputInfoFile;
-    private JButton buttonReverseRows;
+    private JButton buttonOperation;
     private JButton buttonSaveOutputIntoFile;
     private JTable tableOutput;
-    // private JButton buttonReverseColumns;
 
-    private JFileChooser fileChooserOpen;
-    private JFileChooser fileChooserSave;
-    private JMenuBar menuBarMain;
-    private JMenu menuLookAndFeel;
+
+    private final JFileChooser fileChooserOpen;
+    private final JFileChooser fileChooserSave;
+    private final JMenu menuLookAndFeel;
 
 
     public FrameMain() {
@@ -58,7 +57,7 @@ public class FrameMain extends JFrame {
         fileChooserSave.setDialogType(JFileChooser.SAVE_DIALOG);
         fileChooserSave.setApproveButtonText("Save");
 
-        menuBarMain = new JMenuBar();
+        JMenuBar menuBarMain = new JMenuBar();
         setJMenuBar(menuBarMain);
 
         menuLookAndFeel = new JMenu();
@@ -77,17 +76,14 @@ public class FrameMain extends JFrame {
         this.pack();
 
 
-        buttonLoadInputFromFile.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                try {
-                    if (fileChooserOpen.showOpenDialog(panelMain) == JFileChooser.APPROVE_OPTION) {
-                        int[][] arr = ArrayUtils.readIntArray2FromFile(fileChooserOpen.getSelectedFile().getPath());
-                        JTableUtils.writeArrayToJTable(tableInput, arr);
-                    }
-                } catch (Exception e) {
-                    SwingUtils.showErrorMessageBox(e);
+        buttonLoadInputFromFile.addActionListener(actionEvent -> {
+            try {
+                if (fileChooserOpen.showOpenDialog(panelMain) == JFileChooser.APPROVE_OPTION) {
+                    int[][] arr = ArrayUtils.readIntArray2FromFile(fileChooserOpen.getSelectedFile().getPath());
+                    JTableUtils.writeArrayToJTable(tableInput, arr);
                 }
+            } catch (Exception e) {
+                SwingUtils.showErrorMessageBox(e);
             }
         });
         buttonRandomInput.addActionListener(new ActionListener() {
@@ -136,7 +132,7 @@ public class FrameMain extends JFrame {
                 }
             }
         });
-        buttonReverseRows.addActionListener(new ActionListener() {
+        buttonOperation.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 try {
@@ -208,9 +204,9 @@ public class FrameMain extends JFrame {
         final JPanel panel2 = new JPanel();
         panel2.setLayout(new GridLayoutManager(1, 2, new Insets(0, 0, 0, 0), -1, -1));
         panelMain.add(panel2, new GridConstraints(2, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
-        buttonReverseRows = new JButton();
-        buttonReverseRows.setText("Выполнить операцию");
-        panel2.add(buttonReverseRows, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        buttonOperation = new JButton();
+        buttonOperation.setText("Выполнить операцию");
+        panel2.add(buttonOperation, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final Spacer spacer2 = new Spacer();
         panel2.add(spacer2, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, 1, null, null, null, 0, false));
         final JPanel panel3 = new JPanel();

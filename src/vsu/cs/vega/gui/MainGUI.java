@@ -13,9 +13,9 @@ public class MainGUI {
     public static class CmdParams {
         public String inputFile;
         public String outputFile;
-        public boolean reverseRows;
+
         public boolean calc;
-        public boolean reverseColumns;
+
         public boolean error;
         public boolean help;
         public boolean window;
@@ -38,8 +38,6 @@ public class MainGUI {
                 return params;
             }
             if (args[0].equals("-r")) {
-                params.reverseRows = true;
-            } else {
                 params.calc = true;
             }
 
@@ -94,12 +92,7 @@ public class MainGUI {
                 System.err.printf("Can't read array from \"%s\"%n", params.inputFile);
                 System.exit(2);
             }
-            if (params.reverseRows) {
-                Task.reverseRows(arr2);
-            }
-            if (params.reverseColumns) {
-                Task.reverseColumns(arr2);
-            }
+
             if(params.calc){
                 Solution.calc(arr2);
             }
