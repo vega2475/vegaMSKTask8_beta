@@ -1,4 +1,5 @@
 package vsu.cs.vega.cmd;
+
 import vsu.cs.vega.logic.Solution;
 import vsu.cs.vega.logic.Utils;
 
@@ -27,6 +28,8 @@ public class Main {
 
 
     public static void main(String[] args)  {
+        String in1 = "tests/input1.txt";
+        String out1 = "tests/output1.txt";
 
         InputArgs inputArgs = null;
         try {
@@ -40,7 +43,10 @@ public class Main {
 
 
         int[][] sourceMatrix = new int[0][0];
+        int[][] sourceMatrixTests1 = new int[0][0];
+
         try {
+            sourceMatrixTests1 = Utils.readIntMatrixFromFile(in1);
             sourceMatrix = Utils.readIntMatrixFromFile(inputArgs.inputFile);
         }
         catch (IOException e) {
@@ -48,8 +54,11 @@ public class Main {
             System.exit(2);
         }
         int[][] a = Solution.calc(sourceMatrix);
+        int[][] a1 = Solution.calc(sourceMatrixTests1);
+
         try {
             Utils.writeIntMatrixToFile(inputArgs.outputFile, a);
+            Utils.writeIntMatrixToFile(out1, a1);
         }
         catch (IOException e) {
             System.err.printf("Ошибка при записи массива в файл %s", e.toString());
