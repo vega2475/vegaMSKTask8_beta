@@ -1,8 +1,6 @@
 package vsu.cs.vega.logic;
 
 
-
-
 public class Solution {
     public static int[][] calc(int[][] array) {
         int rows = array.length;
@@ -38,12 +36,7 @@ public class Solution {
                 }
             }
         }
-//  uncomment to debug
-//    System.out.println("min=" + min + "; max=" + max);
-//    System.out.println("minRows=" + Arrays.toString(minRows));
-//    System.out.println("maxRows=" + Arrays.toString(maxRows));
-//    System.out.println("minCols=" + Arrays.toString(minCols));
-//    System.out.println("maxCols=" + Arrays.toString(maxCols));
+
         int rowsToDelete = 0, colsToDelete = 0;
         for (int i = 0; i < rows; i++) {
             if (minRows[i] || maxRows[i]) {
@@ -72,11 +65,10 @@ public class Solution {
             }
             r++;
         }
-        //out.println(Arrays.toString(array).replaceAll("^\\[|]$", ""));
+
 
         return result;
     }
-
 
 
 }

@@ -146,18 +146,6 @@ public class FrameMain extends JFrame {
                 }
             }
         });
-//        buttonReverseColumns.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent actionEvent) {
-//                try {
-//                    int[][] matrix = JTableUtils.readIntMatrixFromJTable(tableInput);
-//                    Task.reverseColumns(matrix);
-//                    JTableUtils.writeArrayToJTable(tableOutput, matrix);
-//                } catch (Exception e) {
-//                    SwingUtils.showErrorMessageBox(e);
-//                }
-//            }
-//        });
     }
 
     {

@@ -1,6 +1,5 @@
 package vsu.cs.vega.gui;
 
-
 public class MainGUI {
 
 
